@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define FIO cout.tie(0), cin.tie(0), ios_base::sync_with_stdio(0)
+#define int long long 
+#define vt vector<int>
+#define all(left) left.begin(), left.end()
+#define sortt(left) sort(all(left))
+#define rev(left)      reverse ( all(left) )
+#define co      cout <<
+#define inp(left) cin >> left
+#define espace cout << " "
+#define line cout << endl
+#define MAXNUM       LONG_LONG_MAX 
+#define takevect(left) for (auto &d : left) cin >> d;
+
+unsigned long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+void solve(){
+    string s1,s2;
+    cin >> s1 >> s2 ;
+    int inconnu=0, n=s1.size();
+    int countp=0 , countm=0 , countint=0 , countint2=0, countp1=0 , countm1=0;
+    for ( int i = 0 ; i < n ; i++ ) {
+        if ( s1[i] == '+' ) countp++;
+        if ( s1[i] == '-') countm++;
+        if ( s2[i] == '-') countm1++;
+        if ( s2[i] == '+') countp1++;
+        if ( s2[i] == '?') countint++;
+    } 
+    if ( countp >  countp1 + countint ||  countm >  countm1 + countint   ){
+        cout << (double)0; 
+        return;
+    }
+    int numberplusmissed=countp-countp1,  numberminusmissed=countm-countm1;
+    string missed="";
+    int longeur = 0 ; int i=0;
+    for ( int i = 0 ; i < n ; i++ ) {
+        if ( s2 [i] == '?' ){
+            if ( s1 [i] == '+' )  missed+='+';
+            else missed+='-';
+            longeur++;
+        }
+        
+    }
+    double combi=pow(2,longeur);
+    int prob=factorial(longeur)/(factorial(numberplusmissed)*factorial(numberminusmissed));
+    cout << (prob/combi);
+}
+signed main() {
+    FIO;cout<<fixed;cout<<setprecision(14);
+    #ifndef ONLINE_JUDGE
+        freopen("inp.txt", "r", stdin);
+        freopen("out.txt", "w", stdout);
+    #endif
+    int test = 1 ; // inp ( test );
+    while ( test -- ) solve();
+    return 0;
+}
+
+
+
+
