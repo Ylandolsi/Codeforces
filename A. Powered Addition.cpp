@@ -32,19 +32,6 @@ ordered_set<ll> st;
 class Solution {
 public:
      int n ;
-     ll lpow (ll base  , ll exp){
-         ll x =1;        
-         while(exp>0){        
-             if(exp%2 ==1){       
-                 x = (x*base);
-             }
-             base = (base*base);       
-             exp/=2;
-         }
-         return x;
-         
-     }
-     
      void solve(){
           cin >> n ; 
           vector<ll>a(n);
@@ -59,7 +46,7 @@ public:
           }
           ll second = 0 ; 
           while ( diff >= 1 ){
-               unsigned long long del = lpow(2,second);
+               unsigned long long del = ( 1ll << second ) ;
                diff-=del;
                second++;
           }
