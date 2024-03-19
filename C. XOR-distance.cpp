@@ -57,19 +57,7 @@ public:
                     sum += xx; 
                }
           }
-          for ( int i = ctebit ; i >= 0 ; i--) {
-               ll xx = 1LL << i ;
-               ll x = 1 ; 
-               if ( sum + xx >  r ) continue; 
-               int d = sA[i];
-               int c = sB[i];
-               if ( (x & d ) and  ( x & c ) ){
-                    sA[i] = !sA[i];
-                    sB[i] = !sB[i];
-     
-                    sum += xx; 
-               }
-          }
+          
           ll lastA = sA.to_ullong();
           ll lastB = sB.to_ullong();
           ll ans = lastA - lastB  ;
